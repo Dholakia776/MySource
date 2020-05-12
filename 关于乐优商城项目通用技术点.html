@@ -1,0 +1,469 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>乐优 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="关于乐优商城项目通用技术点.html">
+            
+                <a href="关于乐优商城项目通用技术点.html">
+            
+                    
+                    乐优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >乐优</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="1&#x3001;&#x7528;&#x6237;&#x6CE8;&#x518C;&#x4E0E;&#x767B;&#x5F55;">1&#x3001;&#x7528;&#x6237;&#x6CE8;&#x518C;&#x4E0E;&#x767B;&#x5F55;</h2>
+<h3 id="11-&#x5B9E;&#x4F53;&#x7C7B;">1.1 &#x5B9E;&#x4F53;&#x7C7B;</h3>
+<pre><code class="lang-java"><span class="hljs-meta">@Table</span>(name = <span class="hljs-string">&quot;tb_user&quot;</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>{
+    <span class="hljs-meta">@Id</span>
+    <span class="hljs-meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)
+    <span class="hljs-keyword">private</span> Long id;
+
+    <span class="hljs-keyword">private</span> String username;<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;</span>
+
+    <span class="hljs-meta">@JsonIgnore</span>        <span class="hljs-comment">//&#x5BF9;&#x8C61;&#x5E8F;&#x5217;&#x5316;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#x5FFD;&#x7565;&#x8BE5;&#x5C5E;&#x6027;</span>
+    <span class="hljs-keyword">private</span> String password;<span class="hljs-comment">// &#x5BC6;&#x7801;</span>
+
+    <span class="hljs-keyword">private</span> String phone;<span class="hljs-comment">// &#x7535;&#x8BDD;</span>
+
+    <span class="hljs-keyword">private</span> Date created;<span class="hljs-comment">// &#x521B;&#x5EFA;&#x65F6;&#x95F4;</span>
+
+    <span class="hljs-meta">@JsonIgnore</span>
+    <span class="hljs-keyword">private</span> String salt;<span class="hljs-comment">// &#x5BC6;&#x7801;&#x7684;&#x76D0;&#x503C;</span>
+}
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4E3A;&#x4E86;&#x5B89;&#x5168;&#x8003;&#x8651;&#x3002;&#x8FD9;&#x91CC;&#x5BF9;password&#x548C;salt&#x6DFB;&#x52A0;&#x4E86;&#x6CE8;&#x89E3;@JsonIgnore&#xFF0C;&#x8FD9;&#x6837;&#x5728;json&#x5E8F;&#x5217;&#x5316;&#x65F6;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x628A;password&#x548C;salt&#x8FD4;&#x56DE;&#x3002;</p>
+<h3 id="12-&#x77ED;&#x4FE1;&#x9A8C;&#x8BC1;&#x7801;">1.2 &#x77ED;&#x4FE1;&#x9A8C;&#x8BC1;&#x7801;</h3>
+<ul>
+<li>&#x6280;&#x672F;&#x70B9;&#xFF1A;<ul>
+<li>&#x4F7F;&#x7528;&#x963F;&#x91CC;&#x5927;&#x4E8E;&#x53D1;&#x9001;&#x9A8C;&#x8BC1;&#x7801;</li>
+<li>&#x642D;&#x5EFA;sms-service&#x5FAE;&#x670D;&#x52A1;&#xFF0C;&#x76D1;&#x542C;RabbitMQ&#x7684;&#x6D88;&#x606F;&#x961F;&#x5217;&#xFF0C;&#x83B7;&#x53D6;&#x5230;&#x6D88;&#x606F;&#x4E4B;&#x540E;&#x53D1;&#x9001;&#x77ED;&#x4FE1;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>1&#x3001;&#x751F;&#x6210;&#x9A8C;&#x8BC1;&#x7801;</li>
+<li>2&#x3001;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x5230;RabbitMQ&#x7684;&#x961F;&#x5217;</li>
+<li>3&#x3001;&#x4FDD;&#x5B58;&#x9A8C;&#x8BC1;&#x7801;&#x5230;Redis&#x4E2D;</li>
+</ul>
+</li>
+<li><p><strong>UserController&#xFF1A;</strong></p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * &#x53D1;&#x9001;&#x624B;&#x673A;&#x9A8C;&#x8BC1;&#x7801;
+ * <span class="hljs-doctag">@param</span> phone
+ * <span class="hljs-doctag">@return</span>
+ */</span>
+<span class="hljs-meta">@PostMapping</span>(<span class="hljs-string">&quot;code&quot;</span>)
+<span class="hljs-function"><span class="hljs-keyword">public</span> ResponseEntity&lt;Void&gt; <span class="hljs-title">sendVerifyCode</span><span class="hljs-params">(String phone)</span> </span>{
+    Boolean boo = <span class="hljs-keyword">this</span>.userService.sendVerifyCode(phone);
+    <span class="hljs-keyword">if</span> (boo == <span class="hljs-keyword">null</span> || !boo) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ResponseEntity&lt;&gt;(HttpStatus.CREATED);
+}
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><p><strong>UserService&#xFF1A;</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Autowired</span>
+<span class="hljs-keyword">private</span> StringRedisTemplate redisTemplate;
+
+<span class="hljs-meta">@Autowired</span>
+<span class="hljs-keyword">private</span> AmqpTemplate amqpTemplate;
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String KEY_PREFIX = <span class="hljs-string">&quot;user:code:phone:&quot;</span>;
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger logger = LoggerFactory.getLogger(UserService.class);
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> Boolean <span class="hljs-title">sendVerifyCode</span><span class="hljs-params">(String phone)</span> </span>{
+    <span class="hljs-comment">// &#x751F;&#x6210;&#x9A8C;&#x8BC1;&#x7801;</span>
+    String code = NumberUtils.generateCode(<span class="hljs-number">6</span>);
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">// &#x53D1;&#x9001;&#x77ED;&#x4FE1;</span>
+        Map&lt;String, String&gt; msg = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+        msg.put(<span class="hljs-string">&quot;phone&quot;</span>, phone);
+        msg.put(<span class="hljs-string">&quot;code&quot;</span>, code);
+        <span class="hljs-keyword">this</span>.amqpTemplate.convertAndSend(<span class="hljs-string">&quot;leyou.sms.exchange&quot;</span>, <span class="hljs-string">&quot;sms.verify.code&quot;</span>, msg);
+        <span class="hljs-comment">// &#x5C06;code&#x5B58;&#x5165;redis</span>
+        <span class="hljs-keyword">this</span>.redisTemplate.opsForValue().set(KEY_PREFIX + phone, code, <span class="hljs-number">5</span>, TimeUnit.MINUTES);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    } <span class="hljs-keyword">catch</span> (Exception e) {
+        logger.error(<span class="hljs-string">&quot;&#x53D1;&#x9001;&#x77ED;&#x4FE1;&#x5931;&#x8D25;&#x3002;phone&#xFF1A;{}&#xFF0C; code&#xFF1A;{}&quot;</span>, phone, code);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+}
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x8981;&#x8BBE;&#x7F6E;&#x77ED;&#x4FE1;&#x9A8C;&#x8BC1;&#x7801;&#x5728;Redis&#x7684;&#x7F13;&#x5B58;&#x65F6;&#x95F4;&#x4E3A;5&#x5206;&#x949F;</p>
+</li>
+</ul>
+<h3 id="13-&#x7528;&#x6237;&#x6CE8;&#x518C;">1.3 &#x7528;&#x6237;&#x6CE8;&#x518C;</h3>
+<ul>
+<li>&#x5BF9;&#x7528;&#x6237;&#x5BC6;&#x7801;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#x5B58;&#x50A8;&#xFF08;MD5 + salt&#xFF09;</li>
+<li>&#x8FD8;&#x9700;&#x8981;&#x5BF9;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x77ED;&#x4FE1;&#x9A8C;&#x8BC1;&#x7801;&#x8FDB;&#x884C;&#x6821;&#x9A8C;</li>
+</ul>
+<p><strong>&#x57FA;&#x672C;&#x903B;&#x8F91;&#xFF1A;</strong></p>
+<ul>
+<li>1&#x3001;&#x6821;&#x9A8C;&#x77ED;&#x4FE1;&#x9A8C;&#x8BC1;&#x7801;</li>
+<li>2&#x3001;&#x751F;&#x6210;&#x76D0;&#xFF08;&#x901A;&#x8FC7;&#x5DE5;&#x5177;&#x7C7B;CodecUtils.generateSalt();&#xFF09;</li>
+<li>3&#x3001;&#x5BF9;&#x5BC6;&#x7801;&#x52A0;&#x5BC6;</li>
+<li>4&#x3001;&#x65B0;&#x589E;&#x7528;&#x6237;&#xFF0C;&#x5199;&#x5165;&#x6570;&#x636E;&#x5E93;</li>
+<li>5&#x3001;&#x5220;&#x9664;Redis&#x4E2D;&#x7684;&#x9A8C;&#x8BC1;&#x7801;</li>
+</ul>
+<p><strong>&#x6570;&#x636E;&#x6821;&#x9A8C;&#xFF1A;</strong></p>
+<p>&#x521A;&#x624D;&#x867D;&#x7136;&#x5B9E;&#x73B0;&#x4E86;&#x6CE8;&#x518C;&#xFF0C;&#x4F46;&#x662F;&#x670D;&#x52A1;&#x7AEF;&#x5E76;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x6821;&#x9A8C;&#xFF0C;&#x800C;&#x524D;&#x7AEF;&#x7684;&#x6821;&#x9A8C;&#x662F;&#x5F88;&#x5BB9;&#x6613;&#x88AB;&#x6709;&#x5FC3;&#x4EBA;&#x7ED5;&#x8FC7;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5728;&#x540E;&#x53F0;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6821;&#x9A8C;&#x529F;&#x80FD;&#xFF1A;&#x8FD9;&#x91CC;&#x4F1A;&#x4F7F;&#x7528;Hibernate-Validator&#x6846;&#x67B6;&#x5B8C;&#x6210;&#x6570;&#x636E;&#x6821;&#x9A8C;&#xFF1A;</p>
+<p>Hibernate Validator&#x662F;Hibernate&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#xFF0C;&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x65B9;&#x5F0F;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x7684;&#x5B9E;&#x73B0;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x6570;&#x636E;&#x6821;&#x9A8C;&#x3002;</p>
+<ul>
+<li><p>&#x6211;&#x4EEC;&#x5728;User&#x5BF9;&#x8C61;&#x7684;&#x90E8;&#x5206;&#x5C5E;&#x6027;&#x4E0A;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Table</span>(name = <span class="hljs-string">&quot;tb_user&quot;</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>{
+    <span class="hljs-meta">@Id</span>
+    <span class="hljs-meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)
+    <span class="hljs-keyword">private</span> Long id;
+    <span class="hljs-meta">@Length</span>(min = <span class="hljs-number">4</span>, max = <span class="hljs-number">30</span>, message = <span class="hljs-string">&quot;&#x7528;&#x6237;&#x540D;&#x53EA;&#x80FD;&#x5728;4~30&#x4F4D;&#x4E4B;&#x95F4;&quot;</span>)
+    <span class="hljs-keyword">private</span> String username;<span class="hljs-comment">// &#x7528;&#x6237;&#x540D;</span>
+
+    <span class="hljs-meta">@JsonIgnore</span>
+    <span class="hljs-meta">@Length</span>(min = <span class="hljs-number">4</span>, max = <span class="hljs-number">30</span>, message = <span class="hljs-string">&quot;&#x5BC6;&#x7801;&#x53EA;&#x80FD;&#x5728;4~30&#x4F4D;&#x4E4B;&#x95F4;&quot;</span>)
+    <span class="hljs-keyword">private</span> String password;<span class="hljs-comment">// &#x5BC6;&#x7801;</span>
+
+    <span class="hljs-meta">@Pattern</span>(regexp = <span class="hljs-string">&quot;^1[35678]\\d{9}$&quot;</span>, message = <span class="hljs-string">&quot;&#x624B;&#x673A;&#x53F7;&#x683C;&#x5F0F;&#x4E0D;&#x6B63;&#x786E;&quot;</span>)
+    <span class="hljs-keyword">private</span> String phone;<span class="hljs-comment">// &#x7535;&#x8BDD;</span>
+
+    <span class="hljs-keyword">private</span> Date created;<span class="hljs-comment">// &#x521B;&#x5EFA;&#x65F6;&#x95F4;</span>
+
+    <span class="hljs-meta">@JsonIgnore</span>
+    <span class="hljs-keyword">private</span> String salt;<span class="hljs-comment">// &#x5BC6;&#x7801;&#x7684;&#x76D0;&#x503C;</span>
+}
+</code></pre>
+</li>
+<li><p><strong>&#x7528;&#x6237;&#x67E5;&#x8BE2;&#xFF1A;</strong>&#x67E5;&#x8BE2;&#x529F;&#x80FD;&#xFF0C;&#x6839;&#x636E;&#x53C2;&#x6570;&#x4E2D;&#x7684;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x67E5;&#x8BE2;&#x6307;&#x5B9A;&#x7528;&#x6237;</p>
+<ul>
+<li><p>&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>1&#x3001;&#x6839;&#x636E;&#x7528;&#x6237;&#x540D;&#x67E5;&#x627E;&#x7528;&#x6237;</li>
+<li>2&#x3001;&#x5224;&#x65AD;&#x7528;&#x6237;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;</li>
+<li>3&#x3001;&#x5BF9;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x52A0;&#x76D0;&#x52A0;&#x5BC6;</li>
+<li>4&#x3001;&#x5BF9;&#x5BC6;&#x7801;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;</li>
+</ul>
+</li>
+<li><p>&#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;</p>
+<ul>
+<li>String username&#xFF1A;&#x7528;&#x6237;&#x540D;&#xFF0C;&#x683C;&#x5F0F;&#x4E3A;4~30&#x4F4D;&#x5B57;&#x6BCD;&#x3001;&#x6570;&#x5B57;&#x3001;&#x4E0B;&#x5212;&#x7EBF;</li>
+<li>String password&#xFF1A;&#x7528;&#x6237;&#x5BC6;&#x7801;&#xFF0C;&#x683C;&#x5F0F;&#x4E3A;4~30&#x4F4D;&#x5B57;&#x6BCD;&#x3001;&#x6570;&#x5B57;&#x3001;&#x4E0B;&#x5212;&#x7EBF;  </li>
+</ul>
+</li>
+<li><p>&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF1A;&#x7528;&#x6237;&#x7684;json&#x683C;&#x5F0F;&#x6570;&#x636E;</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-number">6572312</span>,
+    <span class="hljs-string">&quot;username&quot;</span>:<span class="hljs-string">&quot;test&quot;</span>,
+    <span class="hljs-string">&quot;phone&quot;</span>:<span class="hljs-string">&quot;13688886666&quot;</span>,
+    <span class="hljs-string">&quot;created&quot;</span>: <span class="hljs-number">1342432424</span>
+}
+</code></pre>
+</li>
+<li><p>&#x72B6;&#x6001;&#x7801;</p>
+<ul>
+<li>200&#xFF1A;&#x6CE8;&#x518C;&#x6210;&#x529F;</li>
+<li>400&#xFF1A;&#x7528;&#x6237;&#x540D;&#x6216;&#x5BC6;&#x7801;&#x9519;&#x8BEF;</li>
+<li>500&#xFF1A;&#x670D;&#x52A1;&#x5668;&#x5185;&#x90E8;&#x5F02;&#x5E38;&#xFF0C;&#x6CE8;&#x518C;&#x5931;&#x8D25;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-&#x7528;&#x6237;&#x767B;&#x5F55;">1.4 &#x7528;&#x6237;&#x767B;&#x5F55;</h3>
+<p>1&#x3001;&#x6709;&#x72B6;&#x6001;&#x767B;&#x5F55;&#x548C;&#x65E0;&#x72B6;&#x6001;&#x767B;&#x5F55;&#xFF1F;</p>
+<p>2&#x3001;&#x6709;&#x72B6;&#x6001;&#x7684;&#x7F3A;&#x70B9;&#x548C;&#x65E0;&#x72B6;&#x6001;&#x7684;&#x4F18;&#x70B9;&#xFF1F;</p>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x91C7;&#x7528;`JWT + RSA&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;</p>
+<ul>
+<li>token&#xFF1A;&#x767B;&#x5F55;&#x51ED;&#x8BC1;&#x3001;&#x4EE4;&#x724C;</li>
+<li>JWT&#xFF1A;Java web token&#xFF0C;&#x4E0E;oauth2&#x7C7B;&#x4F3C;</li>
+</ul>
+<p>3&#x3001;JWT&#x5305;&#x542B;&#x4E09;&#x90E8;&#x5206;&#x6570;&#x636E;&#xFF1A;</p>
+<ul>
+<li><p>Header&#xFF1A;&#x5934;&#x4FE1;&#x606F;&#xFF0C;&#x901A;&#x5E38;&#x5934;&#x90E8;&#x6709;&#x4E24;&#x90E8;&#x5206;&#x4FE1;&#x606F;&#xFF1A;</p>
+<ul>
+<li>&#x58F0;&#x660E;&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x91CC;&#x662F;JWT</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x4F1A;&#x5BF9;&#x5934;&#x90E8;&#x8FDB;&#x884C;base64&#x7F16;&#x7801;&#xFF0C;&#x5F97;&#x5230;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x6570;&#x636E;</p>
+</li>
+<li><p>Payload&#xFF1A;&#x8F7D;&#x8377;&#xFF0C;&#x5C31;&#x662F;&#x6709;&#x6548;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x822C;&#x5305;&#x542B;&#x4E0B;&#x9762;&#x4FE1;&#x606F;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x6237;&#x8EAB;&#x4EFD;&#x4FE1;&#x606F;&#xFF08;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x91CC;&#x56E0;&#x4E3A;&#x91C7;&#x7528;base64&#x7F16;&#x7801;&#xFF0C;&#x53EF;&#x89E3;&#x7801;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x8981;&#x5B58;&#x653E;&#x654F;&#x611F;&#x4FE1;&#x606F;&#xFF09;</li>
+<li>&#x6CE8;&#x518C;&#x58F0;&#x660E;&#xFF1A;&#x5982;token&#x7684;&#x7B7E;&#x53D1;&#x65F6;&#x95F4;&#xFF0C;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x7B7E;&#x53D1;&#x4EBA;&#x7B49;</li>
+</ul>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x4E5F;&#x4F1A;&#x91C7;&#x7528;base64&#x7F16;&#x7801;&#xFF0C;&#x5F97;&#x5230;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x6570;&#x636E;</p>
+</li>
+<li><p>Signature&#xFF1A;&#x7B7E;&#x540D;&#xFF0C;&#x662F;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x8BA4;&#x8BC1;&#x4FE1;&#x606F;&#x3002;&#x4E00;&#x822C;&#x6839;&#x636E;&#x524D;&#x4E24;&#x6B65;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x518D;&#x52A0;&#x4E0A;&#x670D;&#x52A1;&#x7684;&#x7684;&#x5BC6;&#x94A5;&#xFF08;secret&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x52A0;&#x76D0;&#xFF09;&#xFF08;&#x4E0D;&#x8981;&#x6CC4;&#x6F0F;&#xFF0C;&#x6700;&#x597D;&#x5468;&#x671F;&#x6027;&#x66F4;&#x6362;&#xFF09;&#xFF0C;&#x901A;&#x8FC7;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#x751F;&#x6210;&#x3002;&#x7528;&#x4E8E;&#x9A8C;&#x8BC1;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5B8C;&#x6574;&#x548C;&#x53EF;&#x9760;&#x6027;</p>
+</li>
+</ul>
+<p>&#x751F;&#x6210;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;token==&#x4E2A;&#x4EBA;&#x8BC1;&#x4EF6;  jwt=&#x4E2A;&#x4EBA;&#x8EAB;&#x4EFD;&#x8BC1;</p>
+<p><strong>JWT&#x4EA4;&#x4E92;&#x6D41;&#x7A0B;&#xFF08;&#x7F51;&#x5173;&#x8BBF;&#x95EE;&#x6D41;&#x7A0B;&#xFF09;&#xFF1A;</strong></p>
+<p><img src="D:\Markdown\image\1588314293127.png" alt="58831429312"></p>
+<h4 id="141-&#x767B;&#x5F55;&#x529F;&#x80FD;&#x6D41;&#x7A0B;">1.4.1 &#x767B;&#x5F55;&#x529F;&#x80FD;&#x6D41;&#x7A0B;</h4>
+<ul>
+<li>1&#x3001;&#x8C03;&#x7528;user-service&#x4E2D;&#x7684;queryUser&#x63A5;&#x53E3;&#xFF0C;&#x9A8C;&#x8BC1;&#x7528;&#x6237;&#x662F;&#x5426;&#x6B63;&#x786E;</li>
+<li>2&#x3001;&#x5224;&#x65AD;&#x8FD4;&#x56DE;&#x7684;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x662F;&#x5426;&#x4E3A;&#x7A7A;</li>
+<li>3&#x3001;&#x4E3A;&#x7A7A;&#x76F4;&#x63A5;return&#xFF0C;&#x4E0D;&#x4E3A;&#x7A7A;&#x751F;&#x6210;JWT&#x7C7B;&#x578B;&#x7684;token&#xFF0C;</li>
+<li>4&#x3001;&#x5C06;token&#x4FE1;&#x606F;&#x8BBE;&#x7F6E;&#x5230;cookie&#x4E2D;</li>
+</ul>
+<h4 id="142-&#x9996;&#x9875;&#x7528;&#x6237;&#x540D;&#x56DE;&#x5199;">1.4.2 &#x9996;&#x9875;&#x7528;&#x6237;&#x540D;&#x56DE;&#x5199;</h4>
+<ul>
+<li>1&#x3001;&#x83B7;&#x53D6;cookie&#x4E2D;&#x7684;JWT&#x7C7B;&#x578B;&#x7684;token @CookieValue(&quot;LY_TOKEN&quot;)</li>
+<li>2&#x3001;&#x901A;&#x8FC7;jwtUtils&#x5DE5;&#x5177;&#x7C7B;&#x89E3;&#x6790;JWT&#xFF0C;&#x83B7;&#x53D6;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x5224;&#x65AD;&#x7528;&#x6237;&#x662F;&#x5426;&#x4E3A;&#x7A7A;</li>
+<li>3&#x3001;&#x5237;&#x65B0;Cookie&#x548C;JWT&#x7684;&#x65F6;&#x95F4;</li>
+<li>4&#x3001;&#x54CD;&#x5E94;&#x7528;&#x6237;&#x4FE1;&#x606F;</li>
+</ul>
+<h4 id="143-&#x5728;zuul&#x7F51;&#x5173;&#x4E2D;&#x6DFB;&#x52A0;&#x8FC7;&#x6EE4;&#x5668;">1.4.3 &#x5728;zuul&#x7F51;&#x5173;&#x4E2D;&#x6DFB;&#x52A0;&#x8FC7;&#x6EE4;&#x5668;</h4>
+<ul>
+<li>1&#x3001;&#x83B7;&#x53D6;zuul&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5BF9;&#x8C61;&#xFF0C;&#x83B7;&#x53D6;request</li>
+<li>2&#x3001;&#x901A;&#x8FC7;cookieUtils&#x5DE5;&#x5177;&#x7C7B;&#x83B7;&#x53D6;token</li>
+<li>3&#x3001;&#x89E3;&#x6790;token</li>
+</ul>
+<h4 id="143-&#x89E3;&#x51B3;cookie&#x5199;&#x5165;&#x95EE;&#x9898;">1.4.3 &#x89E3;&#x51B3;cookie&#x5199;&#x5165;&#x95EE;&#x9898;</h4>
+<ul>
+<li>1&#x3001;&#x5728;Nginx&#x8F6C;&#x53D1;&#x7F51;&#x5173;&#x65F6;&#x8BBE;&#x7F6E;&#x643A;&#x5E26;&#x5934;&#x4FE1;&#x606F;</li>
+</ul>
+<p>&#x95EE;&#x9898;&#xFF1A;&#x672A;&#x7ECF;&#x767B;&#x5F55;&#x76F4;&#x63A5;&#x901A;&#x8FC7;url&#x8BBF;&#x95EE;&#x540E;&#x53F0;&#xFF0C;&#x9700;&#x8981;&#x505A;&#x62E6;&#x622A;</p>
+<h2 id="2&#x3001;&#x8D2D;&#x7269;&#x8F66;">2&#x3001;&#x8D2D;&#x7269;&#x8F66;</h2>
+<p>&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ul>
+<li>&#x70B9;&#x51FB;&#x6DFB;&#x52A0;&#x8D2D;&#x7269;&#x8F66;&#x65F6;&#xFF0C;&#x5224;&#x65AD;&#x7528;&#x6237;&#x662F;&#x5426;&#x767B;&#x5F55;<ul>
+<li>&#x672A;&#x767B;&#x5F55;&#xFF1A;&#x4E0D;&#x4E88;&#x8BB8;&#x6DFB;&#x52A0;&#xFF0C;&#x8DF3;&#x8F6C;&#x5230;&#x767B;&#x5F55;&#x9875;&#x9762;</li>
+<li>&#x5DF2;&#x767B;&#x5F55;&#xFF1A;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x8D2D;&#x7269;&#x8F66;&#xFF0C;&#x653E;&#x5165;Redis&#x6216;MongDB </li>
+</ul>
+</li>
+<li>&#x5DF2;&#x7ECF;&#x5728;&#x8D2D;&#x7269;&#x8F66;&#x4E2D;&#x5B58;&#x5728;&#xFF0C;&#x6570;&#x91CF;+1&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x65B0;&#x589E;&#x4E00;&#x6761;&#x5546;&#x54C1;&#x8BB0;&#x5F55;</li>
+<li>&#x6DFB;&#x52A0;&#x540E;&#x67E5;&#x8BE2;&#x8D2D;&#x7269;&#x8F66;</li>
+</ul>
+<p>&#x8D2D;&#x7269;&#x8F66;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"乐优","level":"1.2","depth":1,"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"关于乐优商城项目通用技术点.md","mtime":"2020-05-03T08:23:03.964Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-12T13:06:42.396Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
